@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VesoDENT - Stomatološka ordinacija Zemun</title>
+<meta name="description" content="VesoDENT je stomatološka ordinacija u Zemunu. Petnaest godina brinemo o zubima cele porodice - od redovnih pregleda do implantologije.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#2B96CC;
+    --primary-dark:#227DAF;
+    --dark:#1A1A1A;
+    --text:#333333;
+    --gray:#5F6368;
+    --bg:#FFFFFF;
+    --offbg:#F7F9FA;
+    --border:#E2E6E9;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Open Sans', sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.65;
+    font-size:16px;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Montserrat', sans-serif;
+    color:var(--dark);
+    line-height:1.25;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  ul{list-style:none;}
+
+  .wrap{
+    max-width:1280px;
+    margin:0 auto;
+    padding-left:24px;
+    padding-right:24px;
+  }
+  @media (max-width:768px){
+    .wrap{padding-left:20px;padding-right:20px;}
+  }
+
+  .section{
+    padding-top:96px;
+    padding-bottom:96px;
+  }
+  @media (max-width:768px){
+    .section{padding-top:64px;padding-bottom:64px;}
+  }
+
+  .section-offbg{background:var(--offbg);}
+
+  .eyebrow{
+    color:var(--primary);
+    font-family:'Montserrat', sans-serif;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+    display:block;
+  }
+  h2{
+    font-size:clamp(1.8rem, 3.2vw, 2.6rem);
+    font-weight:700;
+    margin-bottom:20px;
+  }
+  p{
+    max-width:65ch;
+    color:var(--text);
+  }
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+
+  .btn-primary{
+    display:inline-block;
+    background:var(--primary);
+    color:#fff;
+    font-family:'Montserrat', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    padding:14px 30px;
+    border-radius:8px;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+    transition:background 0.2s ease;
+  }
+  .btn-primary:hover{background:var(--primary-dark);}
+
+  /* NAVBAR */
+  .navbar{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+  }
+  .navbar-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    font-size:22px;
+    color:var(--dark);
+    text-decoration:none;
+    letter-spacing:0.5px;
+  }
+  .logo span{color:var(--primary);}
+
+  .nav-desktop{
+    display:flex;
+    align-items:center;
+    gap:40px;
+  }
+  .nav-desktop ul{
+    display:flex;
+    gap:32px;
+  }
+  .nav-desktop ul a{
+    text-decoration:none;
+    font-family:'Montserrat', sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    color:var(--dark);
+  }
+  .nav-desktop ul a:hover{color:var(--primary);}
+
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:5px;
+    width:32px;
+    height:32px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0;
+  }
+  .hamburger span{
+    display:block;
+    width:24px;
+    height:2px;
+    background:var(--dark);
+    transition:all 0.25s ease;
+  }
+  .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.active span:nth-child(2){opacity:0;}
+  .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .nav-mobile{
+    display:none;
+    flex-direction:column;
+    gap:24px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    padding:28px 20px 32px;
+  }
+  .nav-mobile.open{display:flex;}
+  .nav-mobile ul{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .nav-mobile ul a{
+    text-decoration:none;
+    font-family:'Montserrat', sans-serif;
+    font-weight:600;
+    font-size:16px;
+    color:var(--dark);
+  }
+  .nav-mobile .btn-primary{
+    text-align:center;
+    width:100%;
+  }
+
+  @media (max-width:768px){
+    .nav-desktop{display:none;}
+    .hamburger{display:flex;}
+  }
+
+  /* HERO */
+  .hero{
+    padding-top:100px;
+    padding-bottom:100px;
+    background:var(--offbg);
+    border-bottom:1px solid var(--border);
+  }
+  @media (max-width:768px){
+    .hero{padding-top:64px;padding-bottom:64px;}
+  }
+  .hero-inner{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr;}
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 4.6vw, 3.6rem);
+    font-weight:800;
+    margin-bottom:22px;
+  }
+  .hero p{
+    font-size:18px;
+    color:var(--gray);
+    max-width:52ch;
+    margin-bottom:32px;
+  }
+  .hero-img-placeholder{
+    background:#E5E5E5;
+    border:1px solid var(--border);
+    border-radius:8px;
+    aspect-ratio:4/3.2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8A8A8A;
+    font-family:'Montserrat', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    text-align:center;
+    padding:20px;
+  }
+
+  /* STATS */
+  .stats-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin-top:48px;
+    padding-top:40px;
+    border-top:1px solid var(--border);
+  }
+  @media (max-width:600px){
+    .stats-row{grid-template-columns:1fr;}
+  }
+  .stat-item .num{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    font-size:34px;
+    color:var(--primary);
+    margin-bottom:6px;
+  }
+  .stat-item .label{
+    font-size:14.5px;
+    color:var(--gray);
+  }
+
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+  .about-img-placeholder{
+    background:#E5E5E5;
+    border:1px solid var(--border);
+    border-radius:8px;
+    aspect-ratio:4/3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8A8A8A;
+    font-family:'Montserrat', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    text-align:center;
+    padding:20px;
+  }
+
+  /* CARDS GRID - USLUGE */
+  .cards-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    margin-top:48px;
+  }
+  @media (max-width:900px){
+    .cards-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .cards-grid{grid-template-columns:1fr;}
+  }
+  .card{
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:28px 24px;
+    background:#fff;
+  }
+  .card h3{
+    font-size:18px;
+    margin-bottom:10px;
+  }
+  .card p{
+    font-size:14.5px;
+    color:var(--gray);
+    max-width:none;
+  }
+  .icon-circle{
+    width:48px;
+    height:48px;
+    border:1.5px solid var(--primary);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:18px;
+  }
+  .icon-circle svg{width:22px;height:22px;color:var(--primary);}
+
+  /* WHY US */
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    margin-top:48px;
+  }
+  @media (max-width:900px){
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .why-grid{grid-template-columns:1fr;}
+  }
+  .why-item h3{
+    font-size:17px;
+    margin-bottom:8px;
+  }
+  .why-item p{
+    font-size:14.5px;
+    color:var(--gray);
+    max-width:none;
+  }
+
+  /* TEAM */
+  .team-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    margin-top:48px;
+  }
+  @media (max-width:900px){
+    .team-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .team-grid{grid-template-columns:1fr;}
+  }
+  .team-photo{
+    background:#E5E5E5;
+    border:1px solid var(--border);
+    border-radius:8px;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8A8A8A;
+    font-family:'Montserrat', sans-serif;
+    font-weight:600;
+    font-size:13px;
+    text-align:center;
+    padding:16px;
+    margin-bottom:18px;
+  }
+  .team-card h3{
+    font-size:17px;
+    margin-bottom:4px;
+  }
+  .team-card .role{
+    color:var(--primary);
+    font-size:13.5px;
+    font-weight:600;
+    font-family:'Montserrat', sans-serif;
+    margin-bottom:10px;
+    display:block;
+  }
+  .team-card p{
+    font-size:14px;
+    color:var(--gray);
+    max-width:none;
+  }
+
+  /* TESTIMONIALS */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin-top:48px;
+  }
+  @media (max-width:900px){
+    .testi-grid{grid-template-columns:1fr;}
+  }
+  .testi-card{
+    border:1px solid var(--border);
+    border-left:3px solid var(--primary);
+    border-radius:8px;
+    padding:28px 24px;
+    background:#fff;
+  }
+  .testi-card p{
+    font-size:15px;
+    color:var(--text);
+    max-width:none;
+    margin-bottom:16px;
+  }
+  .testi-name{
+    font-family:'Montserrat', sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color:var(--dark);
+  }
+
+  /* CONTACT */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    margin-top:48px;
+  }
+  @media (max-width:900px){
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  .form-group{
+    margin-bottom:20px;
+  }
+  .form-group label{
+    display:block;
+    font-family:'Montserrat', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    margin-bottom:8px;
+  }
+  .form-group input,
+  .form-group textarea{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    font-family:'Open Sans', sans-serif;
+    font-size:15px;
+    color:var(--text);
+    background:#fff;
+  }
+  .form-group textarea{
+    min-height:120px;
+    resize:vertical;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus{
+    outline:none;
+    border-color:var(--primary);
+  }
+
+  .contact-info-item{
+    display:flex;
+    gap:16px;
+    margin-bottom:28px;
+  }
+  .contact-info-item .icon-circle{
+    flex-shrink:0;
+    margin-bottom:0;
+  }
+  .contact-info-item h4{
+    font-size:15.5px;
+    margin-bottom:4px;
+  }
+  .contact-info-item p{
+    font-size:14.5px;
+    color:var(--gray);
+    max-width:none;
+  }
+  .map-placeholder{
+    background:#E5E5E5;
+    border:1px solid var(--border);
+    border-radius:8px;
+    height:200px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#8A8A8A;
+    font-family:'Montserrat', sans-serif;
+    font-weight:600;
+    font-size:13px;
+    text-align:center;
+    padding:16px;
+  }
+
+  /* FOOTER */
+  footer{
+    background:var(--dark);
+    color:#D8DADC;
+    padding-top:64px;
+    padding-bottom:32px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:40px;
+  }
+  @media (max-width:768px){
+    .footer-grid{grid-template-columns:1fr;gap:32px;}
+  }
+  .footer-logo{
+    font-family:'Montserrat', sans-serif;
+    font-weight:800;
+    font-size:20px;
+    color:#fff;
+    margin-bottom:14px;
+    display:inline-block;
+  }
+  .footer-logo span{color:var(--primary);}
+  .footer-grid p{
+    color:#B7BABD;
+    font-size:14px;
+    max-width:40ch;
+  }
+  .footer-col h4{
+    font-family:'Montserrat', sans-serif;
+    color:#fff;
+    font-size:15px;
+    margin-bottom:16px;
+  }
+  .footer-col ul li{
+    margin-bottom:10px;
+  }
+  .footer-col ul a{
+    text-decoration:none;
+    color:#B7BABD;
+    font-size:14px;
+  }
+  .footer-col ul a:hover{color:var(--primary);}
+  .footer-bottom{
+    border-top:1px solid #333;
+    padding-top:24px;
+    font-size:13px;
+    color:#8A8D90;
+    text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="wrap navbar-inner">
+    <a href="#" class="logo">Veso<span>DENT</span></a>
+
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="#">Početna</a></li>
+        <li><a href="#o-nama">O nama</a></li>
+        <li><a href="#usluge">Usluge</a></li>
+        <li><a href="#tim">Tim</a></li>
+        <li><a href="#utisci">Utisci</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <a href="#kontakt" class="btn-primary">Zakaži pregled</a>
+    </nav>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Otvori meni" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="nav-mobile" id="mobileMenu">
+    <ul>
+      <li><a href="#" class="mobile-link">Početna</a></li>
+      <li><a href="#o-nama" class="mobile-link">O nama</a></li>
+      <li><a href="#usluge" class="mobile-link">Usluge</a></li>
+      <li><a href="#tim" class="mobile-link">Tim</a></li>
+      <li><a href="#utisci" class="mobile-link">Utisci</a></li>
+      <li><a href="#kontakt" class="mobile-link">Kontakt</a></li>
+    </ul>
+    <a href="#kontakt" class="btn-primary mobile-link">Zakaži pregled</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <h1>Osmeh kome možeš da veruješ</h1>
+        <p>Petnaest godina brinemo o zubima cele porodice u Zemunu. Prvo pregledamo i objasnimo šta se dešava, tek onda pravimo plan. Cena je poznata pre nego što bušilica krene.</p>
+        <a href="#kontakt" class="btn-primary">Zakaži pregled</a>
+      </div>
+      <div class="hero-img-placeholder">
+        <img src="assets/ordinacija.jpg" alt="Stomatološka stolica i oprema u ordinaciji VesoDENT" style="display:none;">
+        FOTOGRAFIJA ORDINACIJE
+      </div>
+    </div>
+  </section>
+
+  <!-- O NAMA -->
+  <section class="section" id="o-nama">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <span class="eyebrow">O nama</span>
+          <h2>Ordinacija u Zemunu, otvorena 2009.</h2>
+          <p>Dr Veselin Ilić je pre petnaest godina otvorio malu ordinaciju sa jednom stolicom, sa idejom da pacijent ne mora da se plaši zubara. Danas radi tim od pet doktora, ali princip je ostao isti.</p>
+          <p style="margin-top:16px;">Svaki pregled počinje razgovorom, ne bušilicom. Prvo vidimo šta te muči, onda pravimo plan koji ima smisla i vremenski i finansijski.</p>
+
+          <div class="stats-row">
+            <div class="stat-item">
+              <div class="num">15</div>
+              <div class="label">godina rada u Zemunu</div>
+            </div>
+            <div class="stat-item">
+              <div class="num">5</div>
+              <div class="label">doktora u timu</div>
+            </div>
+            <div class="stat-item">
+              <div class="num">48h</div>
+              <div class="label">prosečno čekanje na termin</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-img-placeholder">
+          <img src="assets/dr-veselin.jpg" alt="Dr Veselin Ilić u razgovoru sa pacijentom u ordinaciji" style="display:none;">
+          FOTOGRAFIJA IZ ORDINACIJE
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USLUGE -->
+  <section class="section section-offbg" id="usluge">
+    <div class="wrap">
+      <span class="eyebrow center" style="display:block;text-align:center;">Usluge</span>
+      <h2 class="center" style="text-align:center;">Šta radimo</h2>
+      <p class="center" style="text-align:center;">Od redovnog čišćenja kamenca do implantata. Sve pod istim krovom u Zemunu, sa istim timom koji prati tvoj slučaj od prvog pregleda.</p>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8l8-4 8 4v8l-8 4-8-4V8z"/><path d="M4 8l8 4 8-4"/><path d="M12 12v8"/></svg>
+          </div>
+          <h3>Opšta stomatologija</h3>
+          <p>Redovni pregledi, plombe, čišćenje kamenca. Osnova bez koje ostalo nema smisla.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l7 4v5c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V7l7-4z"/></svg>
+          </div>
+          <h3>Estetska stomatologija</h3>
+          <p>Fasete i izbeljivanje zuba. Za osmeh koji izgleda prirodno i na slici i u ogledalu.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="3"/><path d="M12 11v10"/><path d="M9 17h6"/></svg>
+          </div>
+          <h3>Implantologija</h3>
+          <p>Ugradnju radi dr Veselin lično, uz CT snimak i plan pre svakog zahvata.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16"/><path d="M8 8v8"/><path d="M16 8v8"/><path d="M4 8h16"/><path d="M4 16h16"/></svg>
+          </div>
+          <h3>Ortodoncija</h3>
+          <p>Fiksni i mobilni aparatići, za decu i odrasle. Dr Ana prati slučaj do skidanja aparatića.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a6 6 0 0112 0v2"/></svg>
+          </div>
+          <h3>Dečija stomatologija</h3>
+          <p>Prvi pregled bez straha, uz igru i strpljenje. Dr Jovana radi isključivo sa decom.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 9h6"/><path d="M9 13h6"/></svg>
+          </div>
+          <h3>Protetika</h3>
+          <p>Krunice, mostovi i proteze rađeni po meri, u saradnji sa laboratorijom u Zemunu.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 20c2-6 5-9 8-9s6 3 8 9"/><path d="M12 3v8"/></svg>
+          </div>
+          <h3>Parodontologija</h3>
+          <p>Lečenje desni i paradontoze, pre nego što ozbiljno ugrozi zube.</p>
+        </div>
+        <div class="card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <h3>Hitne intervencije</h3>
+          <p>Bol ne čeka zakazan termin. Primamo hitne slučajeve isti dan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZASTO MI -->
+  <section class="section" id="zasto-mi">
+    <div class="wrap">
+      <span class="eyebrow center" style="display:block;text-align:center;">Zašto VesoDENT</span>
+      <h2 class="center" style="text-align:center;">Četiri stvari koje pacijenti prime k znanju</h2>
+
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>
+          </div>
+          <h3>Termin za 48 sati</h3>
+          <p>Zovi ujutru, najkasnije prekosutra sediš u stolici. Bez čekanja mesec dana za obično čišćenje.</p>
+        </div>
+        <div class="why-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+          </div>
+          <h3>Predračun pre početka</h3>
+          <p>Znaš tačnu cenu pre nego što terapija krene. Bez iznenađenja na kraju.</p>
+        </div>
+        <div class="why-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 6v-2h8v2"/></svg>
+          </div>
+          <h3>Digitalni rendgen</h3>
+          <p>Manje zračenja, snimak na ekranu za dva minuta. Vidiš isto što i doktor.</p>
+        </div>
+        <div class="why-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          </div>
+          <h3>Jedan doktor, cela terapija</h3>
+          <p>Ne šaljemo te od jednog do drugog. Isti doktor prati slučaj od početka do kraja.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIM -->
+  <section class="section section-offbg" id="tim">
+    <div class="wrap">
+      <span class="eyebrow center" style="display:block;text-align:center;">Tim</span>
+      <h2 class="center" style="text-align:center;">Ljudi koji te primaju</h2>
+      <p class="center" style="text-align:center;">Pet doktora, svako sa svojom oblašću. Kad zakažeš, znaš tačno ko će te primiti i za šta je specijalizovan.</p>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="assets/tim-veselin.jpg" alt="Dr Veselin Ilić, osnivač ordinacije VesoDENT" style="display:none;">
+            FOTOGRAFIJA DR VESELINA ILIĆA
+          </div>
+          <h3>Dr Veselin Ilić</h3>
+          <span class="role">Osnivač, oralna hirurgija i implantologija</span>
+          <p>U ordinaciji od prvog dana, 2009. Najviše voli implantologiju, ali ne beži ni od komplikovanih vađenja.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="assets/tim-ana.jpg" alt="Dr Ana Ilić, ortodont u ordinaciji VesoDENT" style="display:none;">
+            FOTOGRAFIJA DR ANE ILIĆ
+          </div>
+          <h3>Dr Ana Ilić</h3>
+          <span class="role">Ortodoncija</span>
+          <p>Radi aparatiće već deset godina, i deci i odraslima. Kaže da je najlepši trenutak kad se aparatić skine.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="assets/tim-marko.jpg" alt="Dr Marko Perić, specijalista estetske stomatologije" style="display:none;">
+            FOTOGRAFIJA DR MARKA PERIĆA
+          </div>
+          <h3>Dr Marko Perić</h3>
+          <span class="role">Estetska stomatologija</span>
+          <p>Specijalizovan za fasete i izbeljivanje. Pre VesoDENT-a radio četiri godine u Nemačkoj.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="assets/tim-jovana.jpg" alt="Dr Jovana Nikolić, dečiji stomatolog" style="display:none;">
+            FOTOGRAFIJA DR JOVANE NIKOLIĆ
+          </div>
+          <h3>Dr Jovana Nikolić</h3>
+          <span class="role">Dečija stomatologija</span>
+          <p>Radi samo sa decom, od prve godinice naovamo. Ima strpljenja za svaki plač u čekaonici.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UTISCI -->
+  <section class="section" id="utisci">
+    <div class="wrap">
+      <span class="eyebrow center" style="display:block;text-align:center;">Utisci pacijenata</span>
+      <h2 class="center" style="text-align:center;">Šta kažu ljudi koji su bili kod nas</h2>
+
+      <div class="testi-grid">
+        <div class="testi-card">
+          <p>"Dovodim decu kod dr Jovane već tri godine. Moja ćerka se ne plaši zubara, što meni kao mami nekad nije jasno kako je moguće."</p>
+          <div class="testi-name">Milica S.</div>
+        </div>
+        <div class="testi-card">
+          <p>"Rešio implantate kod dr Veselina posle nesreće na biciklu. Sve mi je bilo objašnjeno unapred, cena ista kao na predračunu."</p>
+          <div class="testi-name">Nikola T.</div>
+        </div>
+        <div class="testi-card">
+          <p>"Nosila sam aparatić dve godine kod dr Ane. Svaki mesec isti termin, bez čekanja u čekaonici."</p>
+          <div class="testi-name">Jelena M.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="section section-offbg" id="kontakt">
+    <div class="wrap">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Zakaži pregled</h2>
+      <p>Pošalji upit ili nas pozovi direktno. Javljamo se isti radni dan i dogovaramo termin koji ti odgovara.</p>
+
+      <div class="contact-grid">
+        <div>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="ime">Ime i prezime</label>
+              <input type="text" id="ime" name="ime" placeholder="Unesi ime i prezime" required>
+            </div>
+            <div class="form-group">
+              <label for="telefon">Telefon</label>
+              <input type="tel" id="telefon" name="telefon" placeholder="Unesi broj telefona" required>
+            </div>
+            <div class="form-group">
+              <label for="poruka">Poruka</label>
+              <textarea id="poruka" name="poruka" placeholder="Opiši ukratko šta te muči ili koji termin ti odgovara"></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Pošalji upit</button>
+          </form>
+        </div>
+
+        <div>
+          <div class="contact-info-item">
+            <div class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </div>
+            <div>
+              <h4>Adresa</h4>
+              <p>Glavna 45, Zemun, Beograd</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>
+            </div>
+            <div>
+              <h4>Telefon</h4>
+              <p>011 316 22 40</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <p>info@vesodent.com</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </div>
+            <div>
+              <h4>Radno vreme</h4>
+              <p>Pon - Pet: 08 - 20h<br>Subota: 09 - 14h</p>
+            </div>
+          </div>
+
+          <div class="map-placeholder">
+            <img src="assets/mapa.jpg" alt="Mapa sa lokacijom ordinacije VesoDENT u Zemunu" style="display:none;">
+            MAPA LOKACIJE ORDINACIJE
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="footer-logo">Veso<span>DENT</span></a>
+        <p>Stomatološka ordinacija u Zemunu. Radimo od 2009. godine, tim od pet doktora, jedna lokacija.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigacija</h4>
+        <ul>
+          <li><a href="#o-nama">O nama</a></li>
+          <li><a href="#usluge">Usluge</a></li>
+          <li><a href="#tim">Tim</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="#">Glavna 45, Zemun</a></li>
+          <li><a href="#">011 316 22 40</a></li>
+          <li><a href="#">info@vesodent.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2024 VesoDENT. Sva prava zadržana.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburgerBtn.addEventListener('click', function () {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.classList.toggle('active');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+      hamburgerBtn.classList.remove('active');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    alert('Hvala na upitu. Javljamo se u toku radnog dana da dogovorimo termin.');
+    contactForm.reset();
+  });
+</script>
+
+</body>
+</html>
